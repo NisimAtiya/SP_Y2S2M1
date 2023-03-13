@@ -16,7 +16,7 @@ PAdptArray CreateAdptArray(COPY_FUNC cf, DEL_FUNC df ,PRINT_FUNC pf){
     PAdptArray temp = (PAdptArray)malloc(sizeof(AdptArray));
     if(temp==NULL){
         printf("cant create !!");
-        return FAIL;
+        return NULL;
     }
     temp -> ArrSize = 0;
     temp -> pElemArr = NULL;
@@ -30,7 +30,7 @@ PAdptArray CreateAdptArray(COPY_FUNC cf, DEL_FUNC df ,PRINT_FUNC pf){
 void DeleteAdptArray(PAdptArray p){
     if(p==NULL) return;
     for (int i = 0; i < p -> ArrSize; ++i) {
-        p -> del_func(p -> ArrSize[i]);
+        p -> del_func(p -> pElemArr[i]);
     }
     free(p->ArrSize);
     free(p);
@@ -53,7 +53,7 @@ Result SetAdptArrayAt(PAdptArray p, int index, PElement pe){
 }
 PElement GetAdptArrayAt(PAdptArray p, int index){
     if(p==NULL) return NULL;
-    if(p->ArrSize<index) return FAIL;
+    if(p->ArrSize<index) return NULL;
     return p->copy_func((p->pElemArr)[index]);
 }
 int GetAdptArraySize(PAdptArray p){
