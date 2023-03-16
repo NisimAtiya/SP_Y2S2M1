@@ -39,7 +39,7 @@ void DeleteAdptArray(PAdptArray p){
 Result SetAdptArrayAt(PAdptArray p, int index, PElement pe){
     if(p==NULL) return FAIL;
     if(index >= p->ArrSize){
-        PElement* tempArr = (PElement*)malloc((index+1) * sizeof(PElement));
+        PElement* tempArr = (PElement*)calloc((index+1) , sizeof(PElement));
         if(tempArr == NULL) return FAIL;
         memcpy(tempArr, p->pElemArr, (p->ArrSize) * sizeof(PElement));
         free(p->pElemArr);
