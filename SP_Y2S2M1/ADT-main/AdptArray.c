@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+//I was helped by the solution of the first term test in the systems programming 1
 typedef struct AdptArray_
 {
     int ArrSize;
